@@ -1,4 +1,3 @@
-
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
 
@@ -6,15 +5,40 @@ autoGetPage(canvas);
 listenToUser(canvas);
 
 
-var eraserEnabled=false;
-eraser.onclick=function(){
-    eraserEnabled = true;
-    actions.className='actions x'
+var eraserEnabled=false
+
+red.onclick=function(){
+    context.fillStyle='red';
+    context.strokeStyle='red';
+    red.classList.add('active');
+    green.classList.remove('active');
+    blue.classList.remove('active');
+}
+green.onclick=function(){
+    context.fillStyle='green';
+    context.strokeStyle='green';
+    green.classList.add('active');
+    red.classList.remove('active');
+    blue.classList.remove('active');
+}
+blue.onclick=function(){
+    context.fillStyle='#0000E8';
+    context.strokeStyle='#0000E8';
+    blue.classList.add('active');
+    green.classList.remove('active');
+    red.classList.remove('active');
 }
 
-brush.onclick=function(){
-    eraserEnabled = flase;
-    actions.className='actions'
+eraser.onclick=function(){
+    eraserEnabled =true;
+    eraser.classList.add('active');
+    pen.classList.remove('active');
+}
+
+pen.onclick=function(){
+    eraserEnabled=false
+    pen.classList.add('active');
+    eraser.classList.remove('active');
 }
 
 //监听鼠标
@@ -26,10 +50,8 @@ function listenToUser(canvas){
     if(document.body.ontouchstart !== undefined){
         //触屏设备
         canvas.ontouchstart = function(aaa){
-
             var x = aaa.touches[0].clientX;
             var y = aaa.touches[0].clientY;
-            console.log(x,y);
             using = true;
             if(eraserEnabled){
             context.clearRect(x-5,y-5,10,10);
@@ -38,7 +60,6 @@ function listenToUser(canvas){
             }
         }
         canvas.ontouchmove = function(aaa){
-            console.log('接触中.');
             var x = aaa.touches[0].clientX;
             var y = aaa.touches[0].clientY;
             if(!using){ return}
@@ -51,7 +72,6 @@ function listenToUser(canvas){
             }
         }
         canvas.ontouchend = function(aaa){
-            console.log('结束接触');
             using = false;
         }
     }else{
@@ -92,7 +112,6 @@ function listenToUser(canvas){
 //画圆
 function drawCircle(x,y,radius){
     context.beginPath();
-    context.fillStyle='#0000E8';
     context.arc(x,y,radius,0,Math.PI*2);
     context.fill();
 }
@@ -100,22 +119,18 @@ function drawCircle(x,y,radius){
 //画线
 function drawLine(x1,y1,x2,y2){
     context.beginPath();
-    context.strokeStyle='#0000E8';
     context.moveTo(x1,y1); //起点
     context.lineWidth = 5;
     context.lineTo(x2,y2); //终点
     context.stroke();
     context.closePath();
 }
-var eraserEnabled = false
-    eraser.onclick = function(){
-        eraserEnabled = !eraserEnabled;
-}
+
 
 
 //自动监听网页大小
 function autoGetPage(canvas){
-    getPage();
+        getPage();
 
     window.onresize = function(){
         getPage();

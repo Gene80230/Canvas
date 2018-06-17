@@ -6,15 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>我的画板</title>
     <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
     <canvas id="canvas" width=1500 height=500></canvas>
     <div class="actions" id="actions">
-        <button id="eraser">橡皮擦</button>
-        <button id="brush">画笔</button>
+            <svg class="icon active" id=pen><use xlink:href="#icon-Signingpen"></use></svg>
+            <svg class="icon" id=eraser><use xlink:href="#icon-eraser"></use></svg>
     </div>
-   
-
+    <ol class="colors">
+        <li id="red" class="red active"></li>
+        <li id="green" class="green"></li>
+        <li id="blue" class="blue"></li>
+    </ol>
     <script src="main.js"></script>
+    <script src="//at.alicdn.com/t/font_708830_61c202b39j.js"></script>
 </body>
 </html>

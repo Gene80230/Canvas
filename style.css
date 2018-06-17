@@ -1,6 +1,14 @@
 *{
     margin:0;padding:0;
 }
+body{overflow:hidden;}
+ul,ol{list-style: none}
+.icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}  
 #canvas{
     background:rgb(255, 252, 252);
     display: block;
@@ -8,19 +16,39 @@
 .actions{
     position:fixed;
     left:0;
-    bottom:0;
+    top:0;
+}
+.actions svg{
+    width:1.5em;
+    height:1.5em;
+    padding:10px;
+    margin: 0 5px;
+    transition: all 0.3s;
+}
+.actions svg.active{
+    fill:red;
+    transform: scale(1.2);
+    transition: all 0.3s;
 }
 
-.actions > #brush{
-    display: none;
+.colors{
+    position:fixed;
+    left:13px;
+    top:47px;
 }
-
-.actions.x > #brush{
-    display: inline-block;
+.colors li{
+    width:20px;
+    height:20px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.2);
+    margin:10px 0;
+    border-radius:50%;
 }
-.actions.x > #eraser{
-    display: none;
+.colors li.active{
+    transform: scale(1.2);
+    transition: all 0.3s;
 }
-
+.colors li.red{background:red;}
+.colors li.green{background:green;}
+.colors li.blue{background:#0000E8;}
 
 
