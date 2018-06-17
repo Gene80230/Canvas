@@ -1,5 +1,10 @@
+document.body.ontouchstart = function(eee){
+    eee.preventDefault();
+}
+
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
+var lineWidth = 5;
 
 autoGetPage(canvas);
 listenToUser(canvas);
@@ -41,6 +46,26 @@ pen.onclick=function(){
     eraser.classList.remove('active');
 }
 
+thin.onclick = function(){
+    lineWidth = 5;
+}
+thick.onclick = function(){
+    lineWidth = 8;
+}
+
+clear.onclick = function(){
+    context.clearRect(0,0,canvas.width,canvas.height);
+}
+
+save.onclick = function(){
+   var url = canvas.toDataURL();
+   var a = document.createElement('a');
+   document.body.appendChild(a);
+   a.href = url;
+   a.download = '保存的画';
+   a.target = '_blank';
+   a.click();
+}
 //监听鼠标
 function listenToUser(canvas){   
 //鼠标按下时
@@ -120,7 +145,7 @@ function drawCircle(x,y,radius){
 function drawLine(x1,y1,x2,y2){
     context.beginPath();
     context.moveTo(x1,y1); //起点
-    context.lineWidth = 5;
+    context.lineWidth = lineWidth;
     context.lineTo(x2,y2); //终点
     context.stroke();
     context.closePath();

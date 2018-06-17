@@ -1,7 +1,6 @@
 *{
     margin:0;padding:0;
 }
-body{overflow:hidden;}
 ul,ol{list-style: none}
 .icon {
     width: 1em; height: 1em;
@@ -10,12 +9,21 @@ ul,ol{list-style: none}
     overflow: hidden;
 }  
 #canvas{
-    background:rgb(255, 252, 252);
+    background:rgb(255, 255, 255);
     display: block;
+    position:fixed;
+    top:0;
+    left:0;
 }
 .actions{
     position:fixed;
     left:0;
+    top:0;
+}
+
+.actions svg:nth-child(3){
+    position:fixed;
+    right:10px;
     top:0;
 }
 .actions svg{
@@ -51,4 +59,23 @@ ul,ol{list-style: none}
 .colors li.green{background:green;}
 .colors li.blue{background:#0000E8;}
 
+.sizes{
+    position:absolute;
+    right:10px;
+    top:70px;
+}
 
+.sizes li:nth-child(2){
+    margin:30px 0;
+}
+
+.sizes .thin{
+    height:0;
+    width:50px;
+    border-top: 2px solid black;
+}
+.sizes .thick{
+    height:0;
+    width:50px;
+    border-top: 5px solid black;
+}
