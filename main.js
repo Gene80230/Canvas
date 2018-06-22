@@ -165,3 +165,11 @@ function autoGetPage(canvas){
         canvas.height = pageHeight;
     } 
 }
+
+var obj = {
+    '3+3': 'A',
+    '6': 'B'
+}
+
+var a = {0:'a', 1:'b', length: 2}
+    console.log(a)
